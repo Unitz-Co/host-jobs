@@ -7,40 +7,39 @@ exports.createPages = withLocale(async function(item, gatsby) {
   const localeConfig = this;
   // @update query
   const allNodes = await gatsby.graphql(`
-  query jobsQuery {
-    allContentfulJobPost(filter: { node_locale: { eq: "${localeConfig.get('locale')}" } }) {
+  query categoriesQuery {
+    allContentfulCategory(filter: { node_locale: { eq: "${localeConfig.get('locale')}" } }) {
       nodes {
         id: contentful_id
         displayName
-        slug
-        longText {
-          longText
+        avatarUrl {
+          id
         }
-        categories {
-          ... on ContentfulCategory {
-            id
-            displayName
-            slug
-            sys {
-              type
-              contentType {
-                sys {
-                  type
-                  linkType
-                  id
-                }
-              }
-            }
+        slug
+        images {
+          fixed(width: 1600) {
+            width
+            height
+            src
+            srcSet
+          }
+        }
+        image {
+          fixed(width: 1600) {
+            width
+            height
+            src
+            srcSet
           }
         }
       }
     }
   }`);
 
-  const jobs = _.get(allNodes, 'data.allContentfulJobPost.nodes', []);
+  const categories = _.get(allNodes, 'data.allContentfulCategory.nodes', []);
 
   return Promise.all(
-    jobs.map((cat) => {
+    categories.map((cat) => {
       const catSlug = routeStore.toUrl('category', cat);
       const catPath = localeConfig.langSlug(path.join('/', catSlug));
       console.log('creating page', catPath);
