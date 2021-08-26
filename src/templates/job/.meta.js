@@ -40,18 +40,18 @@ exports.createPages = withLocale(async function(item, gatsby) {
   const jobs = _.get(allNodes, 'data.allContentfulJobPost.nodes', []);
 
   return Promise.all(
-    jobs.map((cat) => {
-      const catSlug = routeStore.toUrl('category', cat);
-      const catPath = localeConfig.langSlug(path.join('/', catSlug));
-      console.log('creating page', catPath);
+    jobs.map((job) => {
+      const jobSlug = routeStore.toUrl('job', job);
+      const jobPath = localeConfig.langSlug(path.join('/', jobSlug));
+      console.log('creating page', jobPath);
       return gatsby.actions.createPage({
-        path: catPath,
+        path: jobPath,
         component: item.resolvers.component(gatsby),
         context: {
-          id: _.get(cat, 'id', 'id'),
-          slug: catSlug,
+          id: _.get(job, 'id', 'id'),
+          slug: jobSlug,
           params: {
-            ...cat,
+            ...job,
           },
         },
       });
