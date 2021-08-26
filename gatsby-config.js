@@ -52,6 +52,7 @@ const gbConfig = gatsbyMergeConfig(
       'gatsby-plugin-sharp',
       'gatsby-plugin-postcss',
       'gatsby-plugin-sass',
+      'gatsby-plugin-recaptcha',
       {
         resolve: 'gatsby-source-contentful',
         options: contentfulConfig,
@@ -109,6 +110,14 @@ const gbConfig = gatsbyMergeConfig(
         resolve: 'gatsby-plugin-import',
         options: {
           libraryName: 'lodash',
+        },
+      },
+      {
+        resolve: `gatsby-plugin-recaptcha`,
+        options: {
+          async: false,
+          defer: false,
+          args: `?onload=onloadCallback&render=explicit`,
         },
       },
       {

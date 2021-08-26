@@ -7,7 +7,7 @@ import App from '@uz/unitz-app-web/UserApp';
 import SEO from '@uz/unitz-layout-web/SEO';
 
 import Layout from '@uz/unitz-layout-web/LayoutMain';
-import DetailCategory from '@uz/unitz-pages/DetailCategory';
+import DetailJob from '@uz/unitz-pages/DetailJob';
 import withPageContext from '@uz/unitz-pages/withPageContext';
 
 import PageData from '../../data/PageDataQuery';
@@ -20,7 +20,7 @@ export const component = withPageContext((props) => {
           <SEO pageData={ctx.apply('ctf.findPage', { name: 'Homepage' })} />
           <Layout.POS name="app-header">{ctx.apply('ctf.renderSection', { name: 'articleNavbarSection' })}</Layout.POS>
           <Layout.POS name="app-body">
-            <DetailCategory />
+            <DetailJob />
           </Layout.POS>
           <Layout.POS name="app-footer">{ctx.apply('ctf.renderSection', { name: 'articleFooterSection' })}</Layout.POS>
         </DIV>
