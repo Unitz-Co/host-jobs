@@ -3,12 +3,12 @@ name: beta
 on:
   push:
     branches:
-      - "beta"
+      - 'beta'
 jobs:
   beta:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./ws/packages/host-app-user
+      working-directory: ./ws/packages/host-jobs
     steps:
       - name: setup node v12
         uses: actions/setup-node@v2
