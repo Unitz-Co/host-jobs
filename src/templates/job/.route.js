@@ -4,7 +4,7 @@ const { routeStore } = require('@vl/mod-utils/gatsbyRouteStore');
 
 routeStore.addRule('job', {
   url: (params) => {
-    const slug = _.get(params, 'slug') || _.get(params, 'displayName') || _.get(params, 'id');
+    const slug = _.get(params, 'slug') || _.get(params, 'id') || _.get(params, 'displayName');
     return `/job/${_.toLower(slugify(slug))}`;
   },
   parse: (urlObject) => {
