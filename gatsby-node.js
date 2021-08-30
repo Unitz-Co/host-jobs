@@ -13,7 +13,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   actions.setWebpackConfig({});
 };
 
-exports.onCreatePage = withLocale(async function ({ page, actions }) {
+exports.onCreatePage = withLocale(async function({ page, actions }) {
   const localeConfig = this;
   const pageSlug = page.path;
   const pagePath = localeConfig.langSlug(path.join('/', pageSlug));
@@ -21,6 +21,7 @@ exports.onCreatePage = withLocale(async function ({ page, actions }) {
   const pageContext = _.cloneDeep({
     ...page.context,
     lang: localeConfig.get('lang'),
+    locale: localeConfig.get('locale'),
   });
 
   await actions.createPage({

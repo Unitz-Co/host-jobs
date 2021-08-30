@@ -12,12 +12,16 @@ import SEO from '@uz/unitz-layout-web/SEO';
 
 import { graphql, useStaticQuery } from 'gatsby';
 import _ from 'lodash';
+import useRoute from '@vl/hooks/useGbRoute';
 
 import PageData from '../data/PageDataQuery';
 
 const HomeIndex = withPageContext((props) => {
+  const route = useRoute();
+  const pageContext = route.getPageContext();
+
   const allNodes = useStaticQuery(GbCtfJobsQuery);
-  provideData('jobs', _.get(allNodes, 'allContentfulJobPost.nodes', []));
+  provideData('jobs', _.filter(_.get(allNodes, 'allContentfulJobPost.nodes', []), { node_locale: pageContext.locale }));
   return (
     <App>
       <Layout location={props.location} PageData={PageData}>
@@ -37,8 +41,9 @@ export default HomeIndex;
 
 const GbCtfJobsQuery = graphql`
   query jobsQuery {
-    allContentfulJobPost(filter: { node_locale: { eq: "en-US" } }) {
+    allContentfulJobPost {
       nodes {
+        node_locale
         id: contentful_id
         displayName
         slug
