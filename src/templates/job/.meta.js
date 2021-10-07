@@ -16,6 +16,9 @@ exports.createPages = withLocale(async function(item, gatsby) {
         longText {
           longText
         }
+        description{
+          raw
+        }
         categories {
           ... on ContentfulCategory {
             id
@@ -50,6 +53,8 @@ exports.createPages = withLocale(async function(item, gatsby) {
         context: {
           id: _.get(job, 'id', 'id'),
           slug: jobSlug,
+          lang: localeConfig.get('lang'),
+          job,
           params: {
             ...job,
           },
