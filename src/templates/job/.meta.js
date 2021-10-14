@@ -30,6 +30,7 @@ exports.createPages = withLocale(async function(item, gatsby) {
         categories {
           ... on ContentfulCategory {
             id
+            contentful_id
             displayName
             slug
             sys {
