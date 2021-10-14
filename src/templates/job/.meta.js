@@ -16,12 +16,21 @@ exports.createPages = withLocale(async function(item, gatsby) {
         longText {
           longText
         }
+        image {
+          fixed(width: 1600) {
+            width
+            height
+            src
+            srcSet
+          }
+        }
         description{
           raw
-        }
+        } 
         categories {
           ... on ContentfulCategory {
             id
+            contentful_id
             displayName
             slug
             sys {
