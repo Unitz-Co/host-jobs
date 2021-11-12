@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 const GbCtfProviderQuery_en = graphql`
   query GbCtfProviderQuery_en {
-    allContentfulPage(filter: { node_locale: { eq: "en-US" } }) {
+    allContentfulPage(filter: { node_locale: { eq: "vi-VN" } }) {
       nodes {
         id
         name
@@ -39,7 +39,7 @@ const GbCtfProviderQuery_en = graphql`
         }
       }
     }
-    allContentfulSection(filter: { node_locale: { eq: "en-US" } }) {
+    allContentfulSection(filter: { node_locale: { eq: "vi-VN" } }) {
       nodes {
         id
         name
@@ -128,7 +128,7 @@ const GbCtfProviderQuery_en = graphql`
         }
       }
     }
-    allContentfulItem(filter: { node_locale: { eq: "en-US" } }) {
+    allContentfulItem(filter: { node_locale: { eq: "vi-VN" } }) {
       nodes {
         id
         name
@@ -186,7 +186,7 @@ const GbCtfProviderQuery_en = graphql`
         }
       }
     }
-    allContentfulCategory(filter: { node_locale: { eq: "en-US" } }) {
+    allContentfulCategory(filter: { node_locale: { eq: "vi-VN" } }) {
       nodes {
         id: contentful_id
         displayName
