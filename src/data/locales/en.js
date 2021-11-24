@@ -228,6 +228,7 @@ const GbCtfProviderQuery_en = graphql`
 `;
 
 export const PageData = ({ children }) => {
+  // eslint-disable-next-line
   const res = useStaticQuery(GbCtfProviderQuery_en);
 
   return children ? children(res) : null;

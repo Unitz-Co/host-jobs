@@ -11,6 +11,7 @@ const locales = {
 };
 
 export const PageData = ({ children }) => {
+  // eslint-disable-next-line
   const pageContext = useRoute().getPageContext();
   const lang = _.get(pageContext, 'lang', 'vi');
   const Component = _.get(locales, lang);
